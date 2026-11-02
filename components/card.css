@@ -108,3 +108,30 @@
 .card__list li + li { border-top: 1px solid var(--line); }
 
 .card__list b { color: var(--fg); font-weight: 400; }
+
+/* link lists: each row is its own anchor */
+.card__list--links li { padding: 0; }
+.card__list--links li::before { content: none; }
+
+.proj {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: baseline;
+  gap: var(--s1) var(--s3);
+  padding: var(--s4) 0;
+  text-decoration: none;
+  color: var(--fg);
+}
+.proj__name {
+  font-size: 0.9rem;
+  letter-spacing: 0.02em;
+  transition: color var(--fast) ease;
+}
+.proj__desc {
+  grid-column: 1 / -1;
+  font-size: 0.78rem;
+  line-height: 1.6;
+  color: var(--dim);
+}
+.proj:hover .proj__name { color: var(--accent); }
+.proj:hover .card__arrow { transform: translateX(4px); color: var(--accent); }

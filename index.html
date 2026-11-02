@@ -85,6 +85,13 @@
       margin-top: var(--s1);
     }
 
+    .card__foot .foot-note {
+      text-transform: none;
+      letter-spacing: normal;
+      font-size: 0.92rem;
+      line-height: 1.55;
+      color: var(--dim);
+    }
     .card__foot a {
       color: var(--dim);
       text-decoration: none;
@@ -147,35 +154,42 @@
       </article>
 
       <!-- currently working on -->
-      <a class="card" href="https://github.com/redwinbee?tab=repositories" target="_blank" rel="noopener">
+      <div class="card">
         <div class="card__meta">
           <span>02 · works</span>
-          <span class="card__arrow">→</span>
         </div>
         <div class="card__title">Software</div>
         <div class="card__desc">A selection of software projects I’ve built that might interest you.</div>
-        <ul class="card__list">
-          <li><b>[project-1]</b> — one-line status update</li>
-          <li><b>[project-2]</b> — one-line status update</li>
-          <li><b>[project-3]</b> — one-line status update</li>
-          <li><b>[project-4]</b> — one-line status update</li>
-          <li><b>[project-5]</b> — one-line status update</li>
+        <ul class="card__list card__list--links">
+          <li>
+            <a class="proj" href="https://github.com/redwinbee/stix" target="_blank" rel="noopener">
+              <span class="proj__name">stix</span>
+              <span class="card__arrow">→</span>
+              <span class="proj__desc">A bytecode VM and compiler written in C, built through following the Crafting Interpreters book to understand compiler architecture.</span>
+            </a>
+          </li>
+          <li>
+            <a class="proj" href="https://github.com/redwinbee/cse248-project" target="_blank" rel="noopener">
+              <span class="proj__name">cse248</span>
+              <span class="card__arrow">→</span>
+              <span class="proj__desc">A JavaFX desktop app for assigning instructors to course sections — CSV parsing, persistent CRUD storage with backups, and generated test data. Originally assigned as a project during my A.Sc degree.</span>
+            </a>
+          </li>
         </ul>
-      </a>
+      </div>
 
       <!-- public gpg key -->
       <div class="card">
         <div class="card__meta">
           <span>03 · authentication</span>
-          <span>ed25519</span>
         </div>
         <div class="card__title">Public key</div>
-        <div class="key">CC5C 844E D40B 409A 3CD2 3D68 9189 F5F7 FB19 33BE</div>
         <div class="card__foot">
-          <span>uid: edwin@zwsp.net · sign · enc · auth</span>
+          <span class="foot-note">Verify me:</span>
           <!-- canonical copy lives in /edwin.asc — regenerate both together -->
           <a href="/edwin.asc" download="edwin.asc">download ↓</a>
         </div>
+        <div class="key">CC5C 844E D40B 409A 3CD2 3D68 9189 F5F7 FB19 33BE</div>
 
         <div class="cmd"><span class="prompt">$</span> curl -sO https://zwsp.net/edwin.asc && gpg --import edwin.asc</div>
         <pre class="key key--full">-----BEGIN PGP PUBLIC KEY BLOCK-----
