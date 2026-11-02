@@ -1,0 +1,110 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s3);
+  padding: var(--s5);
+  color: var(--fg);
+  text-decoration: none;
+  font-family: var(--sans);
+
+  border: 1px solid var(--line);
+  border-radius: var(--r-sharp);
+  background: transparent;
+  transition: border-color var(--fast) ease, background var(--fast) ease;
+}
+
+.card:hover {
+  text-decoration: none;
+  border-color: var(--accent);
+  background: var(--surface);
+}
+
+.card__meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--faint);
+  transition: color var(--fast) ease;
+}
+
+.card__title {
+  font-size: 1.2rem;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  position: relative;
+  padding-bottom: var(--s2);
+}
+
+.card__title::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--accent);
+  transition: width var(--med) var(--ease);
+}
+
+.card:hover .card__title::after { width: 3rem; }
+
+.card__desc {
+  font-size: 0.92rem;
+  color: var(--dim);
+  line-height: 1.55;
+}
+
+.card__arrow {
+  font-family: var(--mono);
+  transition: transform var(--med) var(--ease), color var(--fast) ease;
+}
+
+.card:hover .card__arrow {
+  transform: translateX(5px);
+  color: var(--accent);
+}
+
+.card--row {
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--s5);
+}
+
+.card--row .card__title { padding-bottom: 0; }
+
+.card--row .card__title::after { display: none; }
+
+.card--compact { padding: var(--s4); }
+
+.card--compact .card__title { font-size: 1rem; }
+
+.card__list {
+  list-style: none;
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  line-height: 1.75;
+  color: var(--dim);
+  border-top: 1px solid var(--line);
+  padding-top: var(--s3);
+}
+
+.card__list li {
+  padding: var(--s4) 0 var(--s4) 1.2ch;
+  position: relative;
+}
+
+.card__list li::before {
+  content: "·";
+  position: absolute;
+  left: 0;
+  color: var(--faint);
+}
+
+.card__list li + li { border-top: 1px solid var(--line); }
+
+.card__list b { color: var(--fg); font-weight: 400; }

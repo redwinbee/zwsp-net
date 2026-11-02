@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Edwin Bermudes</title>
+  <meta name="description" content="Edwin Bermudes — edwin@zwsp.net" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="components/card.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%230a0a0a'/><rect x='30' y='30' width='40' height='40' fill='%23ffffff'/></svg>" />
+  <style>
+    /* page-specific: name + contact, front and center */
+    .stage {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: var(--s5);
+      gap: var(--s4);
+    }
+    .name {
+      font-weight: 400;
+      font-size: clamp(1.45rem, 6.3vw, 5.2rem);
+      line-height: 1.1;
+      color: var(--fg);
+      animation: in 1s var(--ease) both;
+    }
+    .contact {
+      display: flex;
+      align-items: center;
+      gap: var(--s5);
+      animation: in 1s var(--ease) 0.3s both;
+    }
+    .email, .social {
+      font-size: clamp(0.8rem, 1.4vw, 1rem);
+      letter-spacing: 0.08em;
+      color: var(--faint);
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: color var(--fast) ease, border-color var(--fast) ease;
+    }
+    .email:hover,
+    .social:hover {
+      color: var(--accent);
+      border-color: var(--accent);
+    }
+    /* two cards below the hero */
+    .boards {
+      width: 100%;
+      max-width: 64rem;
+      margin: var(--s6) auto 0;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--s4);
+      text-align: left;
+    }
+    @media (min-width: 44rem) {
+      .boards { grid-template-columns: 1fr 1fr; }
+    }
+    .about-card { grid-column: 1 / -1; }
+
+    /* key block inside the gpg card */
+    .key {
+      font-family: var(--mono);
+      font-size: 0.78rem;
+      letter-spacing: 0.06em;
+      color: var(--dim);
+      line-height: 1.9;
+      overflow-wrap: break-word;
+      border: 1px solid var(--line);
+      padding: var(--s3) var(--s4);
+      background: rgba(255, 255, 255, 0.02);
+    }
+    .card__foot {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--faint);
+      margin-top: var(--s1);
+    }
+
+    .card__foot a {
+      color: var(--dim);
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: color var(--fast) ease, border-color var(--fast) ease;
+    }
+    .card__foot a:hover { color: var(--accent); border-color: var(--accent); }
+
+    /* command block — one click selects the whole line */
+    .cmd {
+      margin-top: var(--s3);
+      font-family: var(--mono);
+      font-size: 0.74rem;
+      letter-spacing: 0;
+      color: var(--fg);
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--line);
+      padding: var(--s3) var(--s4);
+      user-select: all;
+      overflow-x: auto;
+      white-space: nowrap;
+    }
+    .cmd .prompt { color: var(--accent); }
+    /* armored key block */
+    .key--full {
+      margin-top: var(--s3);
+      overflow-x: auto;
+      white-space: pre;
+      font-size: 0.66rem;
+      line-height: 1.55;
+      letter-spacing: 0;
+      color: var(--dim);
+    }
+
+    @keyframes in {
+      from { opacity: 0; transform: translateY(12px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .name, .contact { animation: none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="bg" aria-hidden="true"></div>
+
+  <main class="stage">
+    <h1 class="name">Edwin Bermudes</h1>
+    <div class="contact">
+      <a class="social" href="https://github.com/edwin" target="_blank" rel="me noopener">github</a>
+      <a class="email" href="mailto:edwin@zwsp.net">edwin@zwsp.net</a>
+      <a class="social" href="https://linkedin.com/in/edwinbermudes" target="_blank" rel="me noopener">linkedin</a>
+    </div>
+
+    <section class="boards">
+      <article class="card about-card">
+        <div class="card__meta"><span>01 · about</span></div>
+        <div class="card__title">Hello</div>
+        <p class="card__desc">I’m a software engineer pursuing a B.Sc. in Computer Science at Queens College. I’m especially interested in systems programming and the design of compilers and interpreters.</p>
+      </article>
+
+      <!-- currently working on -->
+      <a class="card" href="https://github.com/edwin?tab=repositories" target="_blank" rel="noopener">
+        <div class="card__meta">
+          <span>02 · works</span>
+          <span class="card__arrow">→</span>
+        </div>
+        <div class="card__title">Software</div>
+        <div class="card__desc">A selection of software projects I’ve built that might interest you.</div>
+        <ul class="card__list">
+          <li><b>[project-1]</b> — one-line status update</li>
+          <li><b>[project-2]</b> — one-line status update</li>
+          <li><b>[project-3]</b> — one-line status update</li>
+          <li><b>[project-4]</b> — one-line status update</li>
+          <li><b>[project-5]</b> — one-line status update</li>
+        </ul>
+      </a>
+
+      <!-- public gpg key -->
+      <div class="card">
+        <div class="card__meta">
+          <span>03 · authentication</span>
+          <span>ed25519</span>
+        </div>
+        <div class="card__title">Public key</div>
+        <div class="key">CC5C 844E D40B 409A 3CD2 3D68 9189 F5F7 FB19 33BE</div>
+        <div class="card__foot">
+          <span>uid: edwin@zwsp.net · sign · enc · auth</span>
+          <!-- canonical copy lives in /edwin.asc — regenerate both together -->
+          <a href="/edwin.asc" download="edwin.asc">download ↓</a>
+        </div>
+
+        <div class="cmd"><span class="prompt">$</span> curl -sO https://zwsp.net/edwin.asc && gpg --import edwin.asc</div>
+        <pre class="key key--full">-----BEGIN PGP PUBLIC KEY BLOCK-----
+
+mDMEauOfjhYJKwYBBAHaRw8BAQdADavtmkXFQvVxknHcqbFGDAj0jkYxad2xcRXX
+b/H3QkO0H0Vkd2luIEJlcm11ZGVzIDxlZHdpbkB6d3NwLm5ldD6IkAQTFgoAOBYh
+BMxchE7UC0CaPNI9aJGJ9ff7GTO+BQJq45+OAhsBBQsJCAcCBhUKCQgLAgQWAgMB
+Ah4BAheAAAoJEJGJ9ff7GTO+EFgBANbUOfnEisMFm/kUWk5uN5aLCfX8l/ru2EXD
+PtUV9qKNAP0Y240LeCAzqXR6EP13OTgkppP55hGWLlQvOikiCdSvD7gzBGrjoIYW
+CSsGAQQB2kcPAQEHQOn2nmdQZKFCwkD26Dg1r4Uarp19I4VafbNHMkXb0iH/iO8E
+GBYKACAWIQTMXIRO1AtAmjzSPWiRifX3+xkzvgUCauOghgIbAgCBCRCRifX3+xkz
+vnYgBBkWCgAdFiEEo9mwiJ9VRlloHoGxSrldJhqYmq0FAmrjoIYACgkQSrldJhqY
+mq1CMwEAm5uqcG9rtp7I/HPQPqATnINw21xmCxiROZlXLXBoicwBAKs/KvErF7hy
+c2tm5pkHuA1YAn6MeROOnxRvfJcd9wcIaV4BAOXz6rMZ+YNtECmwY6mJil9dcmdN
+jVEzK3UiYHV4JLsPAP9VbTH5b6gdANi/cpsI/xtj8CJenYlLhpbBX1yZo0h/A7g4
+BGrjoJoSCisGAQQBl1UBBQEBB0A0k5aaQnFANmVPa6stP0BurvgPBsdzqzzgfS7S
+kB/2VAMBCAeIeAQYFgoAIBYhBMxchE7UC0CaPNI9aJGJ9ff7GTO+BQJq46CaAhsM
+AAoJEJGJ9ff7GTO+l0QA/1EONOVi/QunMQKES5dI/8MHte87pvUL8Pw4P+gQ9nwi
+AP4iOLP/XTuv03MmWlEytmNV3/2j4o/7u4lr3E1RCQfHBbgzBGrjoKoWCSsGAQQB
+2kcPAQEHQNcEDXjog0mzTS5r4zsvKnb2FzuUUJaQvZa3X5TbmR7aiHgEGBYKACAW
+IQTMXIRO1AtAmjzSPWiRifX3+xkzvgUCauOgqgIbIAAKCRCRifX3+xkzvoM5AP0Y
+GTICr91Rpmnt8T9rJS4dNYf0A/YAJCJ8H38ktj/Q1QEA7cRMSGld8DNEuIawClUm
+TAdJ0OuWegEwvOUixmpvnAw=
+=3FQB
+-----END PGP PUBLIC KEY BLOCK-----</pre>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
